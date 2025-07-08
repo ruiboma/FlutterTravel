@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget {
-  final TextEditingController _searchControl = new TextEditingController();
+  const SearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.blueGrey[50],
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(5.0),
         ),
       ),
@@ -18,15 +18,15 @@ class SearchBar extends StatelessWidget {
           color: Colors.blueGrey[300],
         ),
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(10.0),
+          contentPadding: const EdgeInsets.all(10.0),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.white,
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.white,
             ),
             borderRadius: BorderRadius.circular(5.0),
@@ -42,7 +42,6 @@ class SearchBar extends StatelessWidget {
           ),
         ),
         maxLines: 1,
-        controller: _searchControl,
       ),
     );
   }

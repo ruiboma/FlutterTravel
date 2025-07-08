@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travel_concept/util/places.dart';
 import 'package:flutter_travel_concept/widgets/horizontal_place_item.dart';
 import 'package:flutter_travel_concept/widgets/icon_badge.dart';
-import 'package:flutter_travel_concept/widgets/search_bar.dart';
+import 'package:flutter_travel_concept/widgets/search_bar.dart' as custom;
 import 'package:flutter_travel_concept/widgets/vertical_place_item.dart';
 
 class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,10 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: IconBadge(
+              key: const ValueKey('notification_badge'),
               icon: Icons.notifications_none,
+              size: 24.0,
+              color: Colors.white,
             ),
             onPressed: () {},
           ),
@@ -21,7 +26,7 @@ class Home extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
               "Where are you \ngoing?",
@@ -32,8 +37,8 @@ class Home extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20.0),
-            child: SearchBar(),
+            padding: const EdgeInsets.all(20.0),
+            child: custom.SearchBar(),
           ),
           buildHorizontalList(context),
           buildVerticalList(),
@@ -42,15 +47,15 @@ class Home extends StatelessWidget {
     );
   }
 
-  buildHorizontalList(BuildContext context) {
+  Widget buildHorizontalList(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10.0, left: 20.0),
+      padding: const EdgeInsets.only(top: 10.0, left: 20.0),
       height: 250.0,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         primary: false,
-        itemCount: places == null ? 0.0 : places.length,
+        itemCount: places.length,
         itemBuilder: (BuildContext context, int index) {
           Map place = places.reversed.toList()[index];
           return HorizontalPlaceItem(place: place);
@@ -59,14 +64,14 @@ class Home extends StatelessWidget {
     );
   }
 
-  buildVerticalList() {
+  Widget buildVerticalList() {
     return Padding(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       child: ListView.builder(
         primary: false,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: places == null ? 0 : places.length,
+        itemCount: places.length,
         itemBuilder: (BuildContext context, int index) {
           Map place = places[index];
           return VerticalPlaceItem(place: place);

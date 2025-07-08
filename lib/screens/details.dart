@@ -3,12 +3,14 @@ import 'package:flutter_travel_concept/util/places.dart';
 import 'package:flutter_travel_concept/widgets/icon_badge.dart';
 
 class Details extends StatelessWidget {
+  const Details({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
           ),
           onPressed: () => Navigator.pop(context),
@@ -16,7 +18,10 @@ class Details extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: IconBadge(
+              key: const ValueKey('details_notification_badge'),
               icon: Icons.notifications_none,
+              size: 24.0,
+              color: Colors.white,
             ),
             onPressed: () {},
           ),
@@ -24,13 +29,13 @@ class Details extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           buildSlider(),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ListView(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             primary: false,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
               Row(
@@ -40,7 +45,7 @@ class Details extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "${places[0]["name"]}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
                       ),
@@ -49,7 +54,7 @@ class Details extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.bookmark,
                     ),
                     onPressed: () {},
@@ -63,7 +68,7 @@ class Details extends StatelessWidget {
                     size: 14,
                     color: Colors.blueGrey[300],
                   ),
-                  SizedBox(width: 3),
+                  const SizedBox(width: 3),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -79,12 +84,12 @@ class Details extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "${places[0]["price"]}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 17,
                   ),
@@ -92,10 +97,10 @@ class Details extends StatelessWidget {
                   textAlign: TextAlign.left,
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Container(
                 alignment: Alignment.centerLeft,
-                child: Text(
+                child: const Text(
                   "Details",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -105,25 +110,25 @@ class Details extends StatelessWidget {
                   textAlign: TextAlign.left,
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "${places[0]["details"]}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 15.0,
                   ),
                   textAlign: TextAlign.left,
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
             ],
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
+        child: const Icon(
           Icons.airplanemode_active,
         ),
         onPressed: () {},
@@ -131,19 +136,19 @@ class Details extends StatelessWidget {
     );
   }
 
-  buildSlider() {
+  Widget buildSlider() {
     return Container(
-      padding: EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.only(left: 20),
       height: 250.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         primary: false,
-        itemCount: places == null ? 0 : places.length,
+        itemCount: places.length,
         itemBuilder: (BuildContext context, int index) {
           Map place = places[index];
 
           return Padding(
-            padding: EdgeInsets.only(right: 10.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Image.asset(

@@ -6,45 +6,53 @@ class Constants {
   //Colors for theme
   static Color lightPrimary = Color(0xfffcfcff);
   static Color darkPrimary = Colors.black;
-  static Color lightAccent = Colors.blueGrey[900];
+  static Color lightAccent = Colors.blueGrey[900]!;
   static Color darkAccent = Colors.white;
   static Color lightBG = Color(0xfffcfcff);
   static Color darkBG = Colors.black;
   static Color badgeColor = Colors.red;
 
   static ThemeData lightTheme = ThemeData(
-    backgroundColor: lightBG,
-    primaryColor: lightPrimary,
-    accentColor: lightAccent,
-    cursorColor: lightAccent,
     scaffoldBackgroundColor: lightBG,
+    colorScheme: ColorScheme.light(
+      primary: lightPrimary,
+      secondary: lightAccent,
+      surface: lightBG,
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: lightAccent,
+    ),
     appBarTheme: AppBarTheme(
       elevation: 0,
-      textTheme: TextTheme(
-        headline6: TextStyle(
-          color: darkBG,
-          fontSize: 18.0,
-          fontWeight: FontWeight.w800,
-        ),
+      backgroundColor: lightPrimary,
+      foregroundColor: darkBG,
+      titleTextStyle: TextStyle(
+        color: darkBG,
+        fontSize: 18.0,
+        fontWeight: FontWeight.w800,
       ),
     ),
   );
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    backgroundColor: darkBG,
-    primaryColor: darkPrimary,
-    accentColor: darkAccent,
     scaffoldBackgroundColor: darkBG,
-    cursorColor: darkAccent,
+    colorScheme: ColorScheme.dark(
+      primary: darkPrimary,
+      secondary: darkAccent,
+      surface: darkBG,
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: darkAccent,
+    ),
     appBarTheme: AppBarTheme(
       elevation: 0,
-      textTheme: TextTheme(
-        headline6: TextStyle(
-          color: lightBG,
-          fontSize: 18.0,
-          fontWeight: FontWeight.w800,
-        ),
+      backgroundColor: darkPrimary,
+      foregroundColor: lightBG,
+      titleTextStyle: TextStyle(
+        color: lightBG,
+        fontSize: 18.0,
+        fontWeight: FontWeight.w800,
       ),
     ),
   );
